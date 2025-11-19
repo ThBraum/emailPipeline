@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  frontend:
+    container_name: compose-frontend
+    build:
+      context: ./compose/nginx
+      dockerfile: Dockerfile
+      args:
+        # Use relative API path so Nginx can proxy /emails -> backend
+        VITE_EMAIL_API_URL: /
+    ports:
+      - '8081:80'
+    environment:
+      - NODE_ENV=production
+    # Improves compatibility when proxying to the host backend on Linux
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
