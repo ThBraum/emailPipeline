@@ -1,0 +1,30 @@
+<form class="email-form" {{on "submit" this.send}} novalidate>
+  <div class="field">
+    <label for="to">Para</label>
+    <input id="to" type="email" required value={{this.to}} {{on "input" this.updateTo}} placeholder="pessoa@exemplo.com" aria-invalid={{if this.errors.to true false}} />
+    {{#if this.errors.to}}<div class="field-error">{{this.errors.to}}</div>{{/if}}
+  </div>
+
+  <div class="field">
+    <label for="subject">Assunto</label>
+    <input id="subject" type="text" required value={{this.subject}} {{on "input" this.updateSubject}} placeholder="Assunto do email" aria-invalid={{if this.errors.subject true false}} />
+    {{#if this.errors.subject}}<div class="field-error">{{this.errors.subject}}</div>{{/if}}
+  </div>
+
+  <div class="field">
+    <label for="body">Mensagem</label>
+    <textarea id="body" required value={{this.body}} {{on "input" this.updateBody}} placeholder="Escreva sua mensagem aqui" rows="8" aria-invalid={{if this.errors.body true false}}></textarea>
+    {{#if this.errors.body}}<div class="field-error">{{this.errors.body}}</div>{{/if}}
+  </div>
+
+  <div class="field small">
+    <label for="idempotencyKey">Idempotency Key (opcional)</label>
+    <input id="idempotencyKey" type="text" value={{this.idempotencyKey}} {{on "input" this.updateIdempotencyKey}} placeholder="uuid-ops-123" />
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn primary" disabled={{this.loading}} aria-busy={{this.loading}}>
+      {{if this.loading "Enviando…" "Enviar"}}
+    </button>
+  </div>
+</form>

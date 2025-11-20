@@ -1,0 +1,11 @@
+<div class="dashboard">
+  <nav class="nav-tabs">
+    <LinkTo @route="dashboard.send" class="tab">Enviar</LinkTo>
+    <LinkTo @route="dashboard.sent" class="tab">Enviados</LinkTo>
+    <LinkTo @route="dashboard.received" class="tab">Caixa de Entrada</LinkTo>
+    <button class="btn logout" {{on "click" this.logout}}>Logout</button>
+  </nav>
+  <div class="dashboard-content">
+    {{outlet}}
+  </div>
+</div>

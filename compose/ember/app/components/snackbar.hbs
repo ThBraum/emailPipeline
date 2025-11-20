@@ -1,0 +1,6 @@
+<div class="snackbar" role="status" aria-live="polite" hidden={{unless this.snackbar.visible false true}}>
+  <div class="snackbar-inner">
+    {{this.snackbar.message}}
+    <button class="snackbar-close" {{on "click" this.hide}} aria-label="Fechar">×</button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="emails-list">
+  <div class="inbox-header" style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;">
+    <h3 style="margin:0">Caixa de Entrada</h3>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="btn" {{on "click" this.sync}}>Sincronizar</button>
+      <button class="btn" {{on "click" this.refresh}}>Atualizar</button>
+      <LinkTo @route="dashboard.send" class="btn primary">Escrever</LinkTo>
+    </div>
+  </div>
+
+  {{#if this.emails.length}}
+    <ul class="emails">
+      {{#each this.emails as |email|}}
+        <li class="email-item">
+          <div class="email-from">{{email.from}}</div>
+          <div class="email-subject">{{email.subject}}</div>
+          <div class="email-date">{{email.receivedAtUtc}}</div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <div class="empty-inbox">
+      <div class="empty-illustration" aria-hidden="true">
+        <svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg" role="img">
+          <rect width="160" height="120" rx="12" fill="var(--card)" />
+          <path d="M10 20 L80 70 L150 20" stroke="var(--muted)" stroke-width="3" fill="none" stroke-linecap="round" />
+          <rect x="14" y="22" width="132" height="76" rx="8" fill="transparent" stroke="rgba(0,0,0,0.06)" />
+        </svg>
+      </div>
+      <h4>Sua caixa de entrada está vazia</h4>
+      <p class="empty-sub">Quando você receber mensagens, elas aparecerão aqui. Enquanto isso, você pode escrever um novo e-mail.</p>
+      <div style="margin-top:12px;">
+        <LinkTo @route="dashboard.send" class="btn primary">Escrever</LinkTo>
+      </div>
+    </div>
+  {{/if}}
+</div>

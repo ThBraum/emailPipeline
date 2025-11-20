@@ -235,7 +235,7 @@ export function EmailForm({ onSendEmail }: EmailFormProps) {
       subject: 'Seja objetivo: descreva o conteúdo principal em poucas palavras.',
       body: 'Conte-nos a mensagem completa. Você pode utilizar parágrafos curtos para facilitar a leitura.',
       idempotencyKey:
-        'Use uma chave única para evitar envios duplicados (opcional, mas recomendado em integrações).' 
+        'Use uma chave única para evitar envios duplicados (opcional, mas recomendado em integrações).'
     }),
     []
   )

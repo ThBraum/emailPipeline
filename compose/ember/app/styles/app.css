@@ -1,0 +1,520 @@
+:root {
+  --bg: #ffffff;
+  --card: #f7fafc;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --accent: #7c3aed;
+  --success: #059669;
+  --danger: #dc2626;
+  --google-btn-bg: #ffffff;
+  --google-btn-color: #111827;
+  --google-btn-shadow: 0 8px 22px rgba(2,6,23,0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #071022;
+  --card: #04111a;
+  --text: #ffffff;
+  --muted: #9aa6b2;
+  --accent: #8b5cf6;
+  --success: #10b981;
+  --danger: #fb7185;
+  --google-btn-bg: #111827;
+  --google-btn-color: #e6eef8;
+  --google-btn-shadow: 0 12px 36px rgba(2,6,23,0.45);
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+
+.app-shell {
+  max-width: 900px;
+  margin: 36px auto;
+  padding: 20px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px
+}
+
+.brand {
+  font-size: 1.25rem;
+  margin: 0
+}
+
+.app-main {
+  background: linear-gradient(180deg, var(--card), rgba(255, 255, 255, 0.02));
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08)
+}
+
+.email-form {
+  display: block;
+  max-width: 720px
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: 0.9rem;
+  margin-top: 4px
+}
+
+.field.small {
+  max-width: 420px
+}
+
+label {
+  font-size: 0.9rem;
+  margin-bottom: 6px;
+  color: var(--muted)
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  background: var(--bg);
+  color: var(--text);
+  outline: none
+}
+
+textarea {
+  resize: vertical
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center
+}
+
+.btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent), #5b21b6);
+  color: white;
+  box-shadow: 0 6px 18px rgba(123, 63, 248, 0.18)
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed
+}
+
+.theme-switcher {
+  border: 0;
+  background: transparent;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-switcher .label {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--muted);
+  transition: color 220ms ease;
+}
+
+.switch {
+  position: relative;
+  width: 56px;
+  height: 30px;
+  background: rgba(15,23,42,0.08);
+  border-radius: 999px;
+  display: inline-block;
+  padding: 3px;
+  box-sizing: border-box;
+  transition: background 220ms ease, box-shadow 220ms ease;
+}
+
+.knob {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 4px 14px rgba(2,6,23,0.12);
+  transform: translateX(0);
+  transition: transform 300ms cubic-bezier(.2,.9,.2,1), background 220ms ease, box-shadow 220ms ease;
+}
+
+[data-theme="dark"] .switch {
+  background: linear-gradient(90deg,var(--accent),#6c4ae3);
+}
+
+[data-theme="dark"] .knob {
+  transform: translateX(26px);
+  background: #0b1220;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
+
+[data-theme="dark"] .theme-toggle .icon--moon {
+  color: #fff;
+}
+
+[data-theme="dark"] .theme-toggle .icon--sun {
+  color: rgba(255,255,255,0.45);
+}
+
+[data-theme="light"] .theme-toggle .icon--sun {
+  color: #f59e0b;
+}
+
+[data-theme="light"] .theme-toggle .icon--moon {
+  color: rgba(15,23,42,0.35);
+}
+
+@media (max-width:420px) {
+  .theme-switcher .label { display: none; }
+}
+
+  /* user profile in header */
+  .user-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.06);
+  }
+  .user-meta { text-align: left; }
+  .user-name { font-weight: 600; font-size: 0.95rem; }
+  .user-email { font-size: 0.8rem; color: var(--muted); }
+
+.snackbar {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 10050;
+  background: var(--card);
+  color: var(--text);
+  padding: 12px 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.14);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: all 220ms ease
+}
+
+.snackbar[hidden="false"] {
+  opacity: 1;
+  transform: none
+}
+
+.snackbar-inner {
+  display: flex;
+  gap: 12px;
+  align-items: center
+}
+
+.snackbar-close {
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer
+}
+
+@media (max-width:600px) {
+  .app-shell {
+    margin: 18px;
+    padding: 14px
+  }
+
+  .app-main {
+    padding: 16px
+  }
+
+  .brand {
+    font-size: 1rem
+  }
+}
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh
+}
+
+.login-card {
+  background: var(--card);
+  padding: 32px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%
+}
+
+.google-login {
+  background: var(--accent);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer
+}
+
+.dashboard .nav-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+  padding-bottom: 12px
+}
+
+.tab {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 16px;
+  border-radius: 6px
+}
+
+.tab.active,
+.tab:hover {
+  background: var(--accent);
+  color: white
+}
+
+.logout {
+  margin-left: auto
+}
+
+.emails-list {
+  max-width: 800px
+}
+
+.emails {
+  list-style: none;
+  padding: 0;
+  margin: 0
+}
+
+.email-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+  cursor: pointer
+}
+
+.email-item:hover {
+  background: rgba(15, 23, 42, 0.05)
+}
+
+.email-to,
+.email-from {
+  font-weight: 500
+}
+
+.email-subject {
+  flex: 1
+}
+
+.email-status,
+.email-date {
+  font-size: 0.9rem;
+  color: var(--muted)
+}
+
+.email-details {
+  margin-top: 18px;
+  padding: 12px;
+  background: var(--bg);
+  border-radius: 8px
+}
+
+.email-details pre {
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 0.9rem
+}
+
+.empty-inbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 36px 12px;
+  color: var(--muted);
+}
+
+.empty-inbox h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text);
+}
+
+.empty-inbox .empty-sub {
+  max-width: 560px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.empty-inbox .empty-illustration svg {
+  display: block;
+  max-width: 280px;
+  width: 40%;
+  height: auto;
+  opacity: 0.95;
+}
+
+@media (max-width:800px) {
+  .empty-inbox .empty-illustration svg { width: 60%; }
+  .empty-inbox { padding: 24px; }
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: var(--bg);
+}
+
+.login-card {
+  background: var(--card);
+  color: var(--text);
+  width: 100%;
+  height: 100vh;
+  max-width: 1100px;
+  border-radius: 0;
+  padding: 3rem 2rem;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .login-card {
+    border-radius: 1rem;
+    height: 80vh;
+    padding: 3.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    padding: 2rem 1.25rem;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+.login-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.login-subtitle {
+  margin: 0 0 1.75rem;
+  color: #6b7280;
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 999px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease,
+    background-color 120ms ease;
+}
+
+.google-btn {
+  background-color: var(--google-btn-bg);
+  color: var(--google-btn-color);
+  box-shadow: var(--google-btn-shadow);
+}
+
+.google-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+}
+
+.google-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.google-g {
+  font-weight: 700;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  font-size: 1rem;
+  background: conic-gradient(from 45deg,
+      #ea4335,
+      #fbbc05,
+      #34a853,
+      #4285f4,
+      #ea4335);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.google-btn__label {
+  white-space: nowrap;
+}

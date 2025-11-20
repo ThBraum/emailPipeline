@@ -1,0 +1,11 @@
+{{#if this.user}}
+  <div class="user-profile" role="region" aria-label="User profile">
+    {{#if this.user.picture}}
+      <img src={{this.user.picture}} alt="{{this.user.name}}" class="user-avatar" />
+    {{/if}}
+    <div class="user-meta">
+      <div class="user-name">{{this.user.name}}</div>
+      <div class="user-email">{{this.user.email}}</div>
+    </div>
+  </div>
+{{/if}}

@@ -1,0 +1,20 @@
+<div class="emails-list">
+  <h3>Emails Enviados</h3>
+  <button class="btn" {{on "click" this.refresh}}>Atualizar</button>
+  <ul class="emails">
+    {{#each this.emails as |email|}}
+      <li class="email-item" {{on "click" (fn this.viewDetails email.id)}}>
+        <div class="email-to">{{email.to}}</div>
+        <div class="email-subject">{{email.subject}}</div>
+        <div class="email-status">{{email.status}}</div>
+        <div class="email-date">{{email.createdAtUtc}}</div>
+      </li>
+    {{/each}}
+  </ul>
+  {{#if this.selectedEmail}}
+    <div class="email-details">
+      <h4>Detalhes</h4>
+      <pre>{{this.selectedEmailDetails}}</pre>
+    </div>
+  {{/if}}
+</div>
