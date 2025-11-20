@@ -20,4 +20,3 @@ docker compose up --build
 ![alt text](image-3.png)
 
 ![alt text](image-4.png)
-
