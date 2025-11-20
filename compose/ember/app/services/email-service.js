@@ -84,7 +84,7 @@ export default class EmailService extends Service {
     return this.request('/emails/received');
   }
 
-  
+
 
   login() {
     let target;

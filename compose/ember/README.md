@@ -12,7 +12,7 @@ npm ci --no-audit --no-fund || npm install --no-audit --no-fund
 EMBER_ENV=production npm run build
 ```
 
-Build docker image and run (build happens in container) 
+Build docker image and run (build happens in container)
 
 ```bash
 docker compose build frontend
