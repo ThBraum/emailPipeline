@@ -51,4 +51,24 @@ export default class EmailFormComponent extends Component {
       this.loading = false;
     }
   }
+
+  @action
+  updateTo(event) {
+    this.to = event.target.value;
+  }
+
+  @action
+  updateSubject(event) {
+    this.subject = event.target.value;
+  }
+
+  @action
+  updateBody(event) {
+    this.body = event.target.value;
+  }
+
+  @action
+  updateIdempotencyKey(event) {
+    this.idempotencyKey = event.target.value;
+  }
 }

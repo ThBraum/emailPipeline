@@ -7,6 +7,7 @@ const API_BASE =
 
 export default class EmailService extends Service {
   apiBase = API_BASE;
+  currentUser = null;
 
   async request(path, options = {}) {
     let response;
@@ -84,22 +85,30 @@ export default class EmailService extends Service {
     return this.request('/emails/received');
   }
 
+  // --- Profile ---
+
+  async getProfile() {
+    return this.request('/auth/me');
+  }
+
 
 
   login() {
+    const redirectTo = 'http://localhost:8081/received';
     let target;
     try {
       const base = (this.apiBase || '/').replace(/\/+$/, '');
       if (base.startsWith('http://') || base.startsWith('https://')) {
         const safeBase = base.replace('host.docker.internal', 'localhost');
-        target = `${safeBase}/auth/google`;
+        const sep = safeBase.includes('?') ? '&' : '?';
+        target = `${safeBase}/auth/google${sep}redirect=${encodeURIComponent(redirectTo)}`;
       } else {
         const proto = window.location.protocol || 'http:';
         const host = 'localhost';
-        target = `${proto}//${host}:8080/auth/google`;
+        target = `${proto}//${host}:8080/auth/google?redirect=${encodeURIComponent(redirectTo)}`;
       }
     } catch (e) {
-      target = `${window.location.protocol}//localhost:8080/auth/google`;
+      target = `${window.location.protocol}//localhost:8080/auth/google?redirect=${encodeURIComponent(redirectTo)}`;
     }
 
     window.location.href = target;

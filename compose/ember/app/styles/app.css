@@ -213,6 +213,23 @@ textarea {
   .theme-switcher .label { display: none; }
 }
 
+  /* user profile in header */
+  .user-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.06);
+  }
+  .user-meta { text-align: left; }
+  .user-name { font-weight: 600; font-size: 0.95rem; }
+  .user-email { font-size: 0.8rem; color: var(--muted); }
+
 .snackbar {
   position: fixed;
   right: 18px;
